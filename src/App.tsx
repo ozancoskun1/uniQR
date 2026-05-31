@@ -29,7 +29,7 @@ import {
   Pie,
   Cell,
 } from "recharts";
-import { Html5QrcodeScanner, Html5QrcodeScanType } from "html5-qrcode";
+import { Html5Qrcode } from "html5-qrcode";
 import { format } from "date-fns";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -618,45 +618,44 @@ export default function App() {
     };
 
     useEffect(() => {
-      let scanner: Html5QrcodeScanner | null = null;
+      useEffect(() => {
+  let scanner: any = null;
 
-      if (scanning) {
-      scanner = new Html5QrcodeScanner(
-  "reader",
-  {
-    fps: 10,
-    qrbox: { width: 250, height: 250 },
-    rememberLastUsedCamera: true,
-    showTorchButtonIfSupported: true,
-    supportedScanTypes: [
-      Html5QrcodeScanType.SCAN_TYPE_CAMERA,
-      Html5QrcodeScanType.SCAN_TYPE_FILE,
-    ],
-  },
-  false
-);
-       scanner.render(
-  handleScan,
-  (error) => {
-    if (
-      error?.includes?.("NotFoundException") ||
-      error?.includes?.("No MultiFormat Readers")
-    ) {
-      return;
-    }
+  if (scanning) {
+    const startScanner = async () => {
+      const { Html5Qrcode } = await import("html5-qrcode");
 
-    console.log(error);
-  }
-);
+      scanner = new Html5Qrcode("reader");
+
+      try {
+        await scanner.start(
+          {
+            facingMode: "environment",
+          },
+          {
+            fps: 10,
+            qrbox: { width: 250, height: 250 },
+          },
+          (decodedText: string) => {
+            handleScan(decodedText);
+          },
+          () => {}
+        );
+      } catch (err) {
+        console.log(err);
       }
+    };
 
-      return () => {
-        if (scanner) {
-          scanner.clear().catch(() => {});
-        }
-      };
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [scanning]);
+    startScanner();
+  }
+
+  return () => {
+    if (scanner) {
+      scanner.stop().catch(() => {});
+      scanner.clear().catch(() => {});
+    }
+  };
+}, [scanning]);
 
     // Student derived data
     const uniqueCourses = useMemo(() => {
@@ -734,8 +733,8 @@ export default function App() {
                     >
                       <LayoutDashboard size={18} className="text-gray-500" />
                       <div>
-                        <p className="font-semibold text-gray-900">Ana Sayfa</p>
-                        <p className="text-xs text-gray-500">Panele dön</p>
+                        <p className="font-semibold text-gray-900">Panele Dön</p>
+                        <p className="text-xs text-gray-500">Öğrenci paneline geri dön</p>
                       </div>
                     </button>
 
