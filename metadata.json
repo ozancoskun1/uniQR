@@ -1,0 +1,8 @@
+{
+  "name": "UQS",
+  "description": "Üniversiteler için Güvenli QR ve Konum Doğrulamalı Yoklama Sistemi",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
