@@ -683,7 +683,7 @@ export default function App() {
           <div className="p-6">
             <div className="flex items-center gap-3 text-indigo-600 mb-8">
               <QrCode size={28} />
-              <span className="text-xl font-bold text-gray-900">UQS</span>
+              <span className="text-xl font-bold text-gray-900">uniQR</span>
             </div>
             <nav className="space-y-1">
               <NavItem icon={<LayoutDashboard size={20} />} label={t.dashboard} active={activeTab === "dashboard"} onClick={() => setActiveTab("dashboard")} />
