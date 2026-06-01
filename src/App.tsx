@@ -617,8 +617,7 @@ export default function App() {
       });
     };
 
-    useEffect(() => {
-      useEffect(() => {
+   useEffect(() => {
   let scanner: any = null;
 
   if (scanning) {
