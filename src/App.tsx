@@ -604,15 +604,9 @@ export default function App() {
 
           const result = await res.json();
           if (res.ok) {
-  alert(result.message || `Durum: ${result.status}`);
-
-  setScanning(false);
-
-  setTimeout(() => {
-    fetchData();
-    setActiveTab("dashboard");
-  }, 300);
-} else {
+            alert(result.message || `Durum: ${result.status}`);
+            fetchData();
+          } else {
             alert(result.message || "Giriş başarısız");
           }
         } catch {
@@ -654,16 +648,12 @@ export default function App() {
     startScanner();
   }
 
- return () => {
-  if (scanner) {
-    scanner
-      .stop()
-      .then(() => {
-        scanner.clear();
-      })
-      .catch(() => {});
-  }
-};
+  return () => {
+    if (scanner) {
+      scanner.stop().catch(() => {});
+      scanner.clear().catch(() => {});
+    }
+  };
 }, [scanning]);
 
     // Student derived data
