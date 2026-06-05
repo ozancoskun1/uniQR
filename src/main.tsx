@@ -1,6 +1,7 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
+// @ts-ignore: side-effect import for CSS file without type declarations
 import './index.css';
 
 // Fix for environments where window.fetch is read-only but a library tries to polyfill it
