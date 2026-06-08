@@ -364,10 +364,10 @@ export default function App() {
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-2xl">
         <Card title={t.register} subtitle="Hesap oluşturmak için bilgilerinizi girin">
           <form onSubmit={handleRegister} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Input name="firstName" label={t.firstName} required />
-            <Input name="lastName" label={t.lastName} required />
-            <Input name="tcNo" label="TC No" required />
-            <Input name="studentNo" label={t.studentNo} required />
+           <Input name="first_name" label={t.firstName} required />
+<Input name="last_name" label={t.lastName} required />
+<Input name="tc_no" label="TC No" required />
+<Input name="student_no" label={t.studentNo} required />
             <Input name="password" label={t.password} type="password" required />
             <Input name="email" label={t.email} type="email" />
             <Input name="university" label={t.university} />
