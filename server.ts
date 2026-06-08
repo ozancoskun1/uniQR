@@ -228,11 +228,11 @@ async function startServer() {
     );
 
     // ✅ öğrenci bilgisi + displayName
-    let studentInfo = null;
+    let studentInfo: { first_name?: string; last_name?: string } | null = null;
     let displayName: string | null = null;
 
     if (user.role === "STUDENT") {
-      studentInfo = db.prepare("SELECT * FROM students WHERE user_id = ?").get(user.id);
+      studentInfo = db.prepare("SELECT * FROM students WHERE user_id = ?").get(user.id) as { first_name?: string; last_name?: string } | null;
       displayName = buildDisplayName(studentInfo?.first_name, studentInfo?.last_name);
     } else {
       displayName = buildDisplayName(user.first_name, user.last_name);
@@ -501,7 +501,7 @@ async function startServer() {
 
     let profileData: any = { ...u };
     if (u.role === "STUDENT") {
-      const studentInfo = db.prepare("SELECT * FROM students WHERE user_id = ?").get(u.id);
+      const studentInfo: any = db.prepare("SELECT * FROM students WHERE user_id = ?").get(u.id);
       profileData.studentInfo = studentInfo;
       profileData.displayName = buildDisplayName(studentInfo?.first_name, studentInfo?.last_name);
     } else {

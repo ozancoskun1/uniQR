@@ -1,51 +1,155 @@
-# UniAttend - QR & Location Verified Attendance System
+# uniQR – University QR Attendance System
 
-UniAttend is a production-grade university attendance system featuring QR code verification and geolocation validation to prevent fraud.
+Modern QR tabanlı üniversite yoklama sistemi.
+Öğretmenler QR kod oluşturarak yoklama başlatabilir, öğrenciler ise mobil cihazlarıyla QR kodu okutarak derse giriş yapabilir.
+
+---
 
 ## 🚀 Features
 
-- **Dual-Role System**: Dedicated dashboards for Students and Teachers.
-- **Secure Authentication**: JWT-based auth with role-based access control.
-- **Fixed Teacher Access**: Pre-seeded teacher account for security.
-- **Fraud Prevention**: 
-  - QR codes with session-specific tokens.
-  - Geolocation verification (Haversine distance calculation).
-  - Duplicate check-in prevention.
-- **Student Registration**: Unique student number validation.
-- **Analytics**: Visual attendance trends using Recharts.
-- **Audit Logging**: Comprehensive logs for all critical actions.
-- **Multi-language**: Support for Turkish and English.
+### 👨‍🎓 Student Features
 
-## 🔑 Credentials
+* QR kod ile yoklama girişi
+* Gerçek zamanlı kamera ile QR okuma
+* Ders geçmişini görüntüleme
+* Katılım oranı görüntüleme
+* Profil ekranı
+* Konum doğrulama desteği
 
-### Teacher (Fixed)
-- **Username**: `ozancoskunufuk`
-- **Password**: `ozancoskun`
+### 👨‍🏫 Teacher Features
 
-### Student
-- Register via the UI with a unique student number.
-
-## 🛠 Tech Stack
-
-- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, Recharts, Lucide React.
-- **Backend**: Node.js (Express), TypeScript, JWT, Bcrypt.
-- **Database**: SQLite (via `better-sqlite3`) for robust local storage.
-- **AI**: Gemini 2.5 Flash for potential future insights.
-
-## 📦 Installation & Setup
-
-1. The app is pre-configured for the AI Studio environment.
-2. Run `npm run dev` to start the full-stack server.
-3. Access the app at port 3000.
-
-## 🗺 ERD (Simplified)
-
-- **Users**: Auth credentials and roles.
-- **Students**: Extended profile for students.
-- **Courses/Sections**: Academic structure.
-- **Attendance Sessions**: Active QR sessions with location bounds.
-- **Attendance Records**: Individual check-ins with distance logs.
-- **Audit Logs**: Security tracking.
+* Ders oluşturma ve yönetme
+* QR tabanlı yoklama oturumu başlatma
+* Gerçek zamanlı QR oluşturma
+* Katılan öğrencileri görüntüleme
+* Oturum geçmişi ve istatistikler
+* Fullscreen QR desteği
 
 ---
-Crafted for UniAttend.
+
+## 🛠 Technologies Used
+
+### Frontend
+
+* React
+* TypeScript
+* Tailwind CSS
+* Recharts
+* Motion
+* Lucide React
+* html5-qrcode
+* qrcode.react
+
+### Backend
+
+* Node.js
+* Express.js
+* JWT Authentication
+* SQLite (better-sqlite3)
+
+### Deployment
+
+* Railway
+
+---
+
+## 📷 System Workflow
+
+1. Öğretmen ders oluşturur.
+2. Yoklama oturumu başlatır.
+3. Sistem QR kod üretir.
+4. Öğrenciler mobil cihazlarından QR kodu okutur.
+5. Sistem konum ve zaman kontrolü yapar.
+6. Yoklama verileri veritabanına kaydedilir.
+
+---
+
+## 🔐 Authentication
+
+Sistem JWT tabanlı kimlik doğrulama kullanmaktadır.
+
+* Öğrenci Girişi
+* Öğretmen Girişi
+* Token doğrulama
+* Yetki bazlı erişim kontrolü
+
+---
+
+## 📊 Attendance Statistics
+
+Sistem:
+
+* Katılım oranı
+* Ders bazlı istatistikler
+* Öğrenci katılım geçmişi
+* Oturum bazlı raporlar
+
+sunmaktadır.
+
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+ ├── components/
+ ├── pages/
+ ├── routes/
+ ├── database/
+ ├── middleware/
+ ├── utils/
+ └── App.tsx
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/ozancoskun1/uniQR.git
+cd uniQR
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+## 🌐 Deployment
+
+Proje Railway platformu üzerinde deploy edilmiştir.
+
+---
+
+## 📌 Future Improvements
+
+* NFC desteği
+* Bildirim sistemi
+* Öğretmen paneli geliştirmeleri
+* Devamsızlık limit sistemi
+* Excel/PDF rapor export
+* Çoklu üniversite desteği
+
+---
+
+## 👨‍💻 Developer
+
+Ozan Çoşkun
+Management Information Systems – Graduation Project
+
+---
+
+## 📄 License
+
+This project is developed for educational purposes.

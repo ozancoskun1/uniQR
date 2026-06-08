@@ -1117,7 +1117,7 @@ export default function App() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <StatCard title="Toplam Ders" value={courses.length} icon={<BookOpen />} />
                     <StatCard title="Aktif Oturumlar" value={activeSession ? 1 : 0} icon={<Clock />} color="green" />
-                    <StatCard title="Toplam Öğrenci" value="124" icon={<User />} color="indigo" />
+                    <StatCard title="Toplam Öğrenci" value="33" icon={<User />} color="indigo" />
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
