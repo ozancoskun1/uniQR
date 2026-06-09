@@ -321,6 +321,7 @@ export default function App() {
             <form onSubmit={handleLogin} data-role={loginType} className="space-y-4">
               <Input
                 name="username"
+                type="password"
                 label={loginType === "STUDENT" ? t.studentNo : t.username}
                 placeholder={loginType === "TEACHER" ? "Kullanıcı adınızı giriniz." : "220240010"}
                 required
@@ -329,7 +330,7 @@ export default function App() {
               {loginType === "STUDENT" ? (
                 <Input name="password" type="password" label={t.password} placeholder="••••••••" required />
               ) : (
-                <Input name="tcNo" label="TC No" placeholder="Tc kimlik numaranızı giriniz." required />
+                <Input name="tcNo" type="password" label="TC No" placeholder="Tc kimlik numaranızı giriniz." required />
               )}
 
               {error && (
@@ -694,7 +695,7 @@ export default function App() {
       return (stats || []).filter((s: any) => s.status === "OK" || s.status === "EXITED").length;
     }, [stats]);
 
-    const fakeAbsence = 5;
+    const fakeAbsence = 0;
     const attendancePercent = useMemo(() => {
       const denom = (stats?.length || 0) + fakeAbsence;
       if (denom <= 0) return 0;
@@ -937,7 +938,7 @@ export default function App() {
                             <Pie
                               data={[
                                 { name: "Mevcut", value: attendanceOkCount },
-                                { name: "Devamsız", value: fakeAbsence },
+                                { name: "Devamsızlık durumu"},
                               ]}
                               innerRadius={60}
                               outerRadius={80}
@@ -1553,6 +1554,7 @@ export default function App() {
               </motion.div>
             )}
           </AnimatePresence>
+          
         </main>
       </div>
     );
