@@ -351,7 +351,19 @@ export default function App() {
                     {t.register}
                   </button>
                 </p>
+                <div className="mt-2 text-center">
+  <button
+    type="button"
+    onClick={() =>
+      alert("Şifre sıfırlama işlemi için lütfen sistem yöneticisiyle iletişime geçiniz.")
+    }
+    className="text-sm text-indigo-600 font-semibold hover:underline"
+  >
+    Şifremi Unuttum?
+  </button>
+</div>
               </div>
+              
             )}
           </Card>
         </motion.div>
@@ -364,8 +376,21 @@ export default function App() {
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="w-full max-w-2xl">
         <Card title={t.register} subtitle="Hesap oluşturmak için bilgilerinizi girin">
           <form onSubmit={handleRegister} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-           <Input name="first_name" label={t.firstName} required />
-<Input name="last_name" label={t.lastName} required />
+          <Input
+  name="first_name"
+  label={t.firstName}
+  required
+  pattern="^[A-Za-zÇçĞğİıÖöŞşÜü]{2,}$"
+  title="Ad en az 2 harf olmalı ve sadece harf içermelidir"
+/>
+
+<Input
+  name="last_name"
+  label={t.lastName}
+  required
+  pattern="^[A-Za-zÇçĞğİıÖöŞşÜü]{2,}$"
+  title="Soyad en az 2 harf olmalı ve sadece harf içermelidir"
+/>
 <Input name="tc_no" label="TC No" required />
 <Input name="student_no" label={t.studentNo} required />
             <Input name="password" label={t.password} type="password" required />
