@@ -151,7 +151,7 @@ const buildDisplayName = (first?: string, last?: string) => {
 
 /** 3) Seed Fixed Teacher */
 const seedTeacher = () => {
-  const teacherUsername = "ozancoskunufuk";
+  const teacherUsername = "ozancoskunufuj";
   const teacherTC = "13591075012";
   const teacherFirst = "Ozan";
   const teacherLast = "Çoşkun";
@@ -511,7 +511,7 @@ async function startServer() {
     res.json(profileData);
   });
 
-  // --- Vite Middleware ---
+  
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
